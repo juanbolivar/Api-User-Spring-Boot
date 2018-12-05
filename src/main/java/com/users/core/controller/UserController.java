@@ -27,4 +27,10 @@ public class UserController{
 
         return service.update(user);
     }
+
+    @DeleteMapping("/user/{id}/{name}")
+    public boolean deleteUser(@PathVariable("id") long id,@PathVariable("name") String name){
+
+        return service.delete(id,name);
+    }
 }

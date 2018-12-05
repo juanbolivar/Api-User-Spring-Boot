@@ -41,7 +41,7 @@ public class UserService {
         }
     }
 
-    public boolean delete(String name,long id){
+    public boolean delete(long id,String name){
         try {
             User user = repository.findByNameAndId(name,id);
 
