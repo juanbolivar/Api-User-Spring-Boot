@@ -52,19 +52,19 @@ public class UserService {
         }
     }
 
-    public List<MUser> obtain(){
+    public List<MUser> get(){
         List<MUser> users = null;
 
         List<User> usersEntity = repository.findAll();
 
-        return coverter.convertirLista(repository.findAll());
+        return coverter.converterList(repository.findAll());
     }
 
-    public MUser obtainForNameAndLastName(String name,String lastname){
+    public MUser getForNameAndLastName(String name,String lastname){
         return new MUser(repository.findByNameAndLastname(name,lastname));
     }
 
-    public List<MUser> obtainId(long id){
-        return coverter.convertirLista(repository.findById(id));
+    public List<MUser> getForId(long id){
+        return coverter.converterList(repository.findById(id));
     }
 }

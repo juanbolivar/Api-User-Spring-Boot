@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component("converter")
 public class Converter {
-    public List<MUser> convertirLista(List<User> users){
+    public List<MUser> converterList(List<User> users){
         List<MUser> musers = new ArrayList<>();
 
         for(User user: users){
