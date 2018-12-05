@@ -4,10 +4,7 @@ import com.users.core.entity.User;
 import com.users.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -23,5 +20,11 @@ public class UserController{
     public boolean addUser(@RequestBody @Valid User user){
 
         return service.create(user);
+    }
+
+    @PostMapping("/user")
+    public boolean updateUser(@RequestBody @Valid User user){
+
+        return service.update(user);
     }
 }

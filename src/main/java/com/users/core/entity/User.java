@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Column;
+//import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
 @Table(name="user")
 @Entity
+//@XmlRootElement
+//Esta anotación en para que me vaya con xml en lugar de con json
 public class User implements Serializable{
 
     public User(){
