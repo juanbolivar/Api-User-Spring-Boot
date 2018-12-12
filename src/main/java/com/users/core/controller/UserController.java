@@ -18,26 +18,32 @@ public class UserController{
     @Qualifier("service")
     UserService service;
 
+    //Insertar nuevo usuario
     @PutMapping("/user")
     public boolean addUser(@RequestBody @Valid User user){
 
         return service.create(user);
     }
 
+    //actualizar usuario existente
+    //valid es para el json que nos envía,lo convertimos a una clase
     @PostMapping("/user")
     public boolean updateUser(@RequestBody @Valid User user){
 
         return service.update(user);
     }
 
+    //Eliminar usuario
     @DeleteMapping("/user/{id}/{name}")
     public boolean deleteUser(@PathVariable("id") long id,@PathVariable("name") String name){
 
         return service.delete(id,name);
     }
 
+    //Traer lista de los usuarios existentes en la base de datos
     @GetMapping("/users")
     public List<MUser> getUsers(){
-        return service.get();
+
+        return service.getUsers();
     }
 }
