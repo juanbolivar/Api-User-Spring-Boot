@@ -53,7 +53,7 @@ public class UserService {
     }
 
     public boolean delete(long id,String name){
-        logger.info("Delete user");
+        logger.warn("Delete user");
         try {
             User user = repository.findByNameAndId(name,id);
             repository.delete(user);
@@ -69,7 +69,7 @@ public class UserService {
 //        List<MUser> users = null;
 //
 //        List<User> usersEntity = repository.findAll();
-
+        logger.info("Get Users to database");
         return coverter.converterList(repository.findAll());
     }
 
