@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.users.core.repository.UserRepository;
 import com.users.core.converter.Converter;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @Service("service")
@@ -23,7 +24,7 @@ public class UserService {
 
     @Autowired
     @Qualifier("converter")
-    private Converter coverter;
+    private Converter converter;
 
     //Creación de Log (para ver la información de como va nuestro programa)
     private static final Log logger = LogFactory.getLog(UserService.class);
@@ -70,7 +71,7 @@ public class UserService {
 //
 //        List<User> usersEntity = repository.findAll();
         logger.info("Get Users to database");
-        return coverter.converterList(repository.findAll());
+        return converter.converterList(repository.findAll());
     }
 
     public MUser getForNameAndLastname(String name,String lastname){
@@ -78,6 +79,10 @@ public class UserService {
     }
 
     public List<MUser> getForId(long id){
-        return coverter.converterList(repository.findById(id));
+        return converter.converterList(repository.findById(id));
+    }
+
+    public List<MUser> getByPage(Pageable pageable){
+        return converter.converterList(repository.findAll(pageable).getContent());
     }
 }

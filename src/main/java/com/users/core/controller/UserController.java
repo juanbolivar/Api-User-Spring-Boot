@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @RestController
@@ -42,8 +43,8 @@ public class UserController{
 
     //Traer lista de los usuarios existentes en la base de datos
     @GetMapping("/users")
-    public List<MUser> getUsers(){
+    public List<MUser> getUsers(Pageable pageable){
 
-        return service.getUsers();
+        return service.getByPage(pageable);
     }
 }
