@@ -1,6 +1,6 @@
 package com.users.core.configuration;
 
-public class Usuario {
+public class Login {
     private String usuario;
     private String contraseña;
 
