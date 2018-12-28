@@ -13,6 +13,7 @@ import com.users.core.repository.UserRepository;
 import com.users.core.converter.Converter;
 
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 @Service("service")
@@ -29,44 +30,44 @@ public class UserService {
     //Creación de Log (para ver la información de como va nuestro programa)
     private static final Log logger = LogFactory.getLog(UserService.class);
 
-    public boolean create(User user){
+    public boolean create(User user) {
         logger.info("Creating new user");
         try {
             repository.save(user);
             logger.info("Successfully created user");
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("An error has occured creating user");
             return false;
         }
     }
 
-    public boolean update(User user){
+    public boolean update(User user) {
         logger.info("Updating user");
         try {
             repository.save(user);
             logger.info("Successfully updated user");
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("An error has occured updating user");
             return false;
         }
     }
 
-    public boolean delete(long id,String name){
+    public boolean delete(long id, String name) {
         logger.warn("Delete user");
         try {
-            User user = repository.findByNameAndId(name,id);
+            User user = repository.findByNameAndId(name, id);
             repository.delete(user);
             logger.info("Successfully deleted user");
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("An error has occured deleting user");
             return false;
         }
     }
 
-    public List<MUser> getUsers(){
+    public List<MUser> getUsers() {
 //        List<MUser> users = null;
 //
 //        List<User> usersEntity = repository.findAll();
@@ -74,15 +75,11 @@ public class UserService {
         return converter.converterList(repository.findAll());
     }
 
-    public MUser getForNameAndLastname(String name,String lastname){
-        return new MUser(repository.findByNameAndLastname(name,lastname));
+    public MUser getForNameAndLastname(String name, String lastname) {
+        return new MUser(repository.findByNameAndLastname(name, lastname));
     }
 
-    public List<MUser> getForId(long id){
-        return converter.converterList(repository.findById(id));
-    }
-
-    public List<MUser> getByPage(Pageable pageable){
+    public List<MUser> getByPage(Pageable pageable) {
         return converter.converterList(repository.findAll(pageable).getContent());
     }
 }

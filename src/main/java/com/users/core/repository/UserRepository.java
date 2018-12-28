@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Serializable>, Pagin
 
     public abstract User findByName(String name);
 
-    public abstract List<User> findById(long id);
+    public abstract User findById(long id);
 
     public abstract User findByNameAndLastname(String name,String lastname);
 

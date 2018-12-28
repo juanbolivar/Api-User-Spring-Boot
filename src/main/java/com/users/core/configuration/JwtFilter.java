@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 
 
-public class JwtFilter  extends GenericFilterBean {
+public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request,
@@ -27,6 +27,6 @@ public class JwtFilter  extends GenericFilterBean {
             throws IOException, ServletException {
         Authentication authentication = JwtUtil.getAuthentication((HttpServletRequest) request);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 }

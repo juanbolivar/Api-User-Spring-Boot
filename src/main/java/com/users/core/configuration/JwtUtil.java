@@ -13,28 +13,28 @@ import static java.util.Collections.emptyList;
 public class JwtUtil {
 
     //Método para crear el JWT y enviarlo al cliente en el header de la respuesta
-    static void addAuthentication(HttpServletResponse res, String username){
+    static void addAuthentication(HttpServletResponse res, String username) {
         String token = Jwts.builder()
                 .setSubject(username)
                 //Hash con el que firmaremos la clave
-                .signWith(SignatureAlgorithm.HS512,"p@tit0")
+                .signWith(SignatureAlgorithm.HS512, "p@tit0")
                 .compact();
 
-            //agregamos al encabezado el token
-            res.addHeader("Authorization","Bearer " + token);
+        //agregamos al encabezado el token
+        res.addHeader("Authorization", "Bearer " + token);
     }
 
     //Método para validar el token enviado por el cliente
-    static Authentication getAuthentication(HttpServletRequest request){
+    static Authentication getAuthentication(HttpServletRequest request) {
 
         //Obtenemos el token que viene en el encabezado de la petición
         String token = request.getHeader("Authorization");
 
         //si hay un token presente, entonces lo validamos
-        if(token != null){
+        if (token != null) {
             String user = Jwts.parser()
                     .setSigningKey("p@tit0")
-                    .parseClaimsJws(token.replace("Bearer",""))//este metoso es el que valida
+                    .parseClaimsJws(token.replace("Bearer", ""))//este metoso es el que valida
                     .getBody()
                     .getSubject();
 
@@ -42,7 +42,7 @@ public class JwtUtil {
             //no requerimos un autenticación por username/password
             //por este motivo podemos devolver un UsernamePasswordAuthenticationToken sin password
             return user != null ?
-                    new UsernamePasswordAuthenticationToken(user,null,emptyList()) :
+                    new UsernamePasswordAuthenticationToken(user, null, emptyList()) :
                     null;
         }
         return null;

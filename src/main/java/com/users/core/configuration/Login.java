@@ -5,10 +5,12 @@ public class Login {
     private String contraseña;
 
     public String getUsuario() {
+
         return usuario;
     }
 
     public void setUsuario(String usuario) {
+
         this.usuario = usuario;
     }
 
@@ -17,6 +19,7 @@ public class Login {
     }
 
     public void setContraseña(String contraseña) {
+
         this.contraseña = contraseña;
     }
 }

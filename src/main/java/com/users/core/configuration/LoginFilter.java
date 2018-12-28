@@ -18,19 +18,21 @@ import java.util.Collections;
 
 public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
-    public LoginFilter(String url, AuthenticationManager authManager){
+    public LoginFilter(String url, AuthenticationManager authManager) {
         super(new AntPathRequestMatcher(url));
         setAuthenticationManager(authManager);
     }
 
     @Override
     public Authentication attemptAuthentication(
-        HttpServletRequest req, HttpServletResponse res)
-        throws AuthenticationException, IOException, ServletException {
+            HttpServletRequest req, HttpServletResponse res)
+            throws AuthenticationException, IOException, ServletException {
+
         InputStream body = req.getInputStream();
 
-        Login user = new ObjectMapper().readValue(body,Login.class);
+        Login user = new ObjectMapper().readValue(body, Login.class);
 
+        //estos datos son de la clase login de configuration
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         user.getUsuario(),
@@ -42,9 +44,9 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     protected void successfulAuthentication(
-        HttpServletRequest req,
-        HttpServletResponse res, FilterChain chain,
-        Authentication auth) throws IOException, ServletException{
+            HttpServletRequest req,
+            HttpServletResponse res, FilterChain chain,
+            Authentication auth) throws IOException, ServletException {
 
         //Si la autenticación fue exitosa, agregamos el token a la respuesta
         JwtUtil.addAuthentication(res, auth.getName());
