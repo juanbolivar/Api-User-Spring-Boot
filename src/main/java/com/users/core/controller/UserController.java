@@ -18,7 +18,7 @@ public class UserController{
     @Autowired
     @Qualifier("service")
     UserService service;
-
+//*****PRUEBA*****
     //Insertar nuevo usuario
     @PutMapping("/user")
     public boolean addUser(@RequestBody @Valid User user){
