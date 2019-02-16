@@ -15,9 +15,13 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Serializable>, PagingAndSortingRepository<User, Serializable> {
 
     public abstract User findByName(String name);
+<<<<<<< HEAD
 
     public abstract User findById(long id);
 
+=======
+    public abstract User findById(long id);
+>>>>>>> fa8cd29... La aplicación funciona y he creado el metodo, para traer un usuario por su id
     public abstract User findByNameAndLastname(String name,String lastname);
 
     public abstract User findByNameAndId(String name,long id);

@@ -67,19 +67,33 @@ public class UserService {
         }
     }
 
+<<<<<<< HEAD
     public List<MUser> getUsers() {
 //        List<MUser> users = null;
 //
 //        List<User> usersEntity = repository.findAll();
         logger.info("Get Users to database");
         return converter.converterList(repository.findAll());
+=======
+    public List<MUser> getUsers(){
+        List<MUser> users = null;
+
+        List<User> usersEntity = repository.findAll();
+
+        return coverter.converterList(repository.findAll());
+>>>>>>> fa8cd29... La aplicación funciona y he creado el metodo, para traer un usuario por su id
     }
 
     public MUser getForNameAndLastname(String name, String lastname) {
         return new MUser(repository.findByNameAndLastname(name, lastname));
     }
 
+<<<<<<< HEAD
     public List<MUser> getByPage(Pageable pageable) {
         return converter.converterList(repository.findAll(pageable).getContent());
+=======
+    public MUser getUser(long id){
+        return new MUser(repository.findById(id));
+>>>>>>> fa8cd29... La aplicación funciona y he creado el metodo, para traer un usuario por su id
     }
 }

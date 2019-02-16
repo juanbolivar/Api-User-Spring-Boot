@@ -40,11 +40,25 @@ public class UserController{
 
         return service.delete(id,name);
     }
+<<<<<<< HEAD
 
     //Traer lista de los usuarios existentes en la base de datos
     @GetMapping("/users")
     public List<MUser> getUsers(Pageable pageable){
 
         return service.getByPage(pageable);
+=======
+    //Traer todos los usuarios
+    @GetMapping("/users")
+    public List<MUser> getUsers(){
+        return service.getUsers();
+    }
+
+    //Traer un usuario por su id
+    @GetMapping("/user/{id}")
+    public MUser getUser(@PathVariable("id") long id){
+        MUser mUser = service.getUser(id);
+        return mUser;
+>>>>>>> fa8cd29... La aplicación funciona y he creado el metodo, para traer un usuario por su id
     }
 }
