@@ -14,7 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1")
 public class UserController{
-
+    
+    //codigo funcionando
     @Autowired
     @Qualifier("service")
     UserService service;
