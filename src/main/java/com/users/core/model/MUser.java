@@ -2,7 +2,9 @@ package com.users.core.model;
 
 import com.users.core.entity.User;
 
-public class MUser {
+import java.util.List;
+
+public class MUser{
 
     public MUser(){
 

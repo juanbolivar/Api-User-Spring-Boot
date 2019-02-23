@@ -19,36 +19,7 @@ public class UserController{
     @Autowired
     @Qualifier("service")
     UserService service;
-//*****PRUEBA*****
-    //Insertar nuevo usuario
-    @PutMapping("/user")
-    public boolean addUser(@RequestBody @Valid User user){
 
-        return service.create(user);
-    }
-
-    //actualizar usuario existente
-    //valid es para el json que nos envía,lo convertimos a una clase
-    @PostMapping("/user")
-    public boolean updateUser(@RequestBody @Valid User user){
-
-        return service.update(user);
-    }
-
-    //Eliminar usuario
-    @DeleteMapping("/user/{id}/{name}")
-    public boolean deleteUser(@PathVariable("id") long id,@PathVariable("name") String name){
-
-        return service.delete(id,name);
-    }
-<<<<<<< HEAD
-
-    //Traer lista de los usuarios existentes en la base de datos
-    @GetMapping("/users")
-    public List<MUser> getUsers(Pageable pageable){
-
-        return service.getByPage(pageable);
-=======
     //Traer todos los usuarios
     @GetMapping("/users")
     public List<MUser> getUsers(){
@@ -60,6 +31,29 @@ public class UserController{
     public MUser getUser(@PathVariable("id") long id){
         MUser mUser = service.getUser(id);
         return mUser;
->>>>>>> fa8cd29... La aplicación funciona y he creado el metodo, para traer un usuario por su id
     }
+
+    //valid es para el json que nos envía,lo convertimos a una clase
+    //crear nuevo usuario
+    @PostMapping("/user")
+    public boolean addUser(@RequestBody @Valid User user){
+
+        return service.create(user);
+    }
+
+    //actualizar usuario existente
+    @PutMapping("/user")
+    public boolean updateUser(@RequestBody @Valid User user){
+
+        return service.update(user);
+    }
+
+
+    //Eliminar usuario
+    @DeleteMapping("/user/{id}/{name}")
+    public boolean deleteUser(@PathVariable("id") long id,@PathVariable("name") String name){
+
+        return service.delete(id,name);
+    }
+
 }
