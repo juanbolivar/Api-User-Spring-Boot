@@ -22,8 +22,8 @@ public class UserController{
 
     //Traer todos los usuarios
     @GetMapping("/users")
-    public List<MUser> getUsers(){
-        return service.getUsers();
+    public List<MUser> getUsers(Pageable pageable){
+        return service.getByPage(pageable);
     }
 
     //Traer un usuario por su id

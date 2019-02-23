@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.users.core.repository.UserRepository;
 import com.users.core.converter.Converter;
 
-//import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -82,15 +82,9 @@ public class UserService {
             logger.info("Get User from the database");
             return new MUser(repository.findById(id));
         }
-//    public MUser getForNameAndLastname(String name, String lastname) {
-//        return new MUser(repository.findByNameAndLastname(name, lastname));
-//    }
-//
-//
-//    public List<MUser> getByPage(Pageable pageable) {
-//        return converter.converterList(repository.findAll(pageable).getContent());
-//
-//    public MUser getUser(long id){
-//        return new MUser(repository.findById(id));
-//    }
+
+    public List<MUser> getByPage(Pageable pageable) {
+        return converter.converterList(repository.findAll(pageable).getContent());
+
+    }
 }
