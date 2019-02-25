@@ -84,6 +84,7 @@ public class UserService {
         }
 
     public List<MUser> getByPage(Pageable pageable) {
+        logger.info("Get Users from the database");
         return converter.converterList(repository.findAll(pageable).getContent());
 
     }
