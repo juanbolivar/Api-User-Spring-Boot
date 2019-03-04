@@ -4,24 +4,24 @@
 //import java.io.Serializable;
 //
 //@Entity
-//@Table(name="LOGIN")
+//@Table(name = "LOGIN")
 //public class Login implements Serializable {
 //
 //    @GeneratedValue
 //    @Id
-//    @Column(name="ID",unique = true)
+//    @Column(name = "ID", unique = true)
 //    private long id;
 //
-//    @Column(name="USER",unique = true)
+//    @Column(name = "USER", unique = true)
 //    private String user;
 //
-//    @Column(name="PASSWORD")
+//    @Column(name = "PASSWORD")
 //    private String password;
 //
-//    @Column(name="ROL")
+//    @Column(name = "ROL")
 //    private byte rol;
 //
-//    @Column(name="ACTIVE")
+//    @Column(name = "ACTIVE")
 //    private boolean active;
 //
 //    public long getId() {

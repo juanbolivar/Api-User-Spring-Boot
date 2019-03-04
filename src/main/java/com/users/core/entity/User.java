@@ -1,23 +1,20 @@
 package com.users.core.entity;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import javax.persistence.*;
 //import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
-@Table(name="user")
+@Table(name = "user")
 @Entity
 //@XmlRootElement
 //Esta anotación en para que me vaya con xml en lugar de con json
-public class User implements Serializable{
+public class User implements Serializable {
 
-    public User(){
+    public User() {
 
     }
+
     public User(long id, String name, String lastname, String email, int movilephone) {
         this.id = id;
         this.name = name;
@@ -26,24 +23,25 @@ public class User implements Serializable{
         this.movilephone = movilephone;
     }
 
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     private long id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="lastname")
+    @Column(name = "lastname")
     private String lastname;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
-    @Column(name="movilephone")
+    @Column(name = "movilephone")
     private int movilephone;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

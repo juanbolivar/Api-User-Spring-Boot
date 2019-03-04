@@ -13,13 +13,15 @@ import java.util.List;
 @Repository("repository")
 public interface UserRepository extends JpaRepository<User, Serializable>, PagingAndSortingRepository<User, Serializable> {
 
-    public abstract User findByName(String name);
-
     public abstract User findById(long id);
 
-    public abstract User findByNameAndLastname(String name,String lastname);
+    public abstract User findByNameAndLastname(String name, String lastname);
 
-    public abstract User findByNameAndId(String name,long id);
+    public abstract Page<User> findAll(Pageable pageable);
 
-  public abstract Page<User> findAll(Pageable pageable);
+    public abstract User save(User user);
+
+    public abstract User deleteById(long id);
+
+
 }

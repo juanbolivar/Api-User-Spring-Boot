@@ -4,13 +4,13 @@ import com.users.core.entity.User;
 
 import java.util.List;
 
-public class MUser{
+public class MUser {
 
-    public MUser(){
+    public MUser() {
 
     }
 
-    public MUser(User user){
+    public MUser(User user) {
 
         this.id = user.getId();
         this.name = user.getName();
