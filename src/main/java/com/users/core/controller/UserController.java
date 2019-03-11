@@ -45,7 +45,7 @@ public class UserController {
     //crear nuevo usuario
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@RequestBody @Valid User user) {
+    public User createUser(@RequestBody User user) {
         logger.info("Creating User");
         try {
             userService.saveUser(user);
@@ -75,7 +75,7 @@ public class UserController {
     //Eliminar usuario
     @DeleteMapping("/users/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable("id") long id) {
+    public void deleteUseryoutyo(@PathVariable("id") long id) {
 
         userService.deleteUser(id);
     }
